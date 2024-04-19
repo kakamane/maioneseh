@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conversor de Temperatura</title>
+</head>
+<body>
+  <h2>Bem vindo ao conversor digital</h2>
+
+  <label for="temp">Digite a temperatura:</label><br>
+  <input type="number" id="temp" name="temp"><br><br>
+
+  <label for="scale">Qual a escala de temperatura?</label><br>
+  <select id="scale" name="scale">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+    <option value="kelvin">Kelvin</option>
+  </select><br><br>
+
+  <button onclick="convertTemperature()">Converter</button>
+
+  <p id="output"></p>
+
+  <script>
+    function convertTemperature() {
+      var temp = document.getElementById('temp').value;
+      var scale = document.getElementById('scale').value;
+      var output = document.getElementById('output');
+
+      switch (scale) {
+        case 'celsius':
+          output.innerHTML = "A temperatura em Fahrenheit é: " + ((temp * 9/5) + 32).toFixed(2) +
+                             "<br>A temperatura em Kelvin é: " + (temp + 273.15).toFixed(2);
+          break;
+        case 'fahrenheit':
+          output.innerHTML = "A temperatura em Celsius é: " + ((temp - 32) * 5/9).toFixed(2) +
+                             "<br>A temperatura em Kelvin é: " + ((temp - 32) * 5/9 + 273.15).toFixed(2);
+          break;
+        case 'kelvin':
+          output.innerHTML = "A temperatura em Celsius é: " + (temp - 273.15).toFixed(2) +
+                             "<br>A temperatura em Fahrenheit é: " + ((temp - 273.15) * 9/5 + 32).toFixed(2);
+          break;
+        default:
+          output.innerHTML = "Opção inválida";
+      }
+    }
+  </script>
+</body>
+</html>
